@@ -29,7 +29,9 @@
 									</ColumnListItem>
 								</items>
 							</Table>
+							<Button text="{i18n>SubirArchivos}" press="onUploadFiles"></Button>
 					</content>
+					
 				</Page>
 			</pages>
 		</App>

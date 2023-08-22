@@ -12,7 +12,16 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
-		}
+		},
+		"dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZSM_FERRETERIA_LGB4_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
 	},
 
 	"sap.ui": {
@@ -58,6 +67,15 @@
 				"settings": {
 					"bundleName": "LGB4.Carpinteria.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"}
 			}
 		},
 		"resources": {

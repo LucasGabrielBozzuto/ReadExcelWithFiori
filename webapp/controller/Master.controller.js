@@ -1,7 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
 
 	return Controller.extend("LGB4.Carpinteria.controller.Master", {
@@ -44,6 +46,7 @@ sap.ui.define([
 							json.push(excelData[i]);
 						}
 						excelModel.refresh();
+						
 					});
 				}.bind(this);
 				
@@ -54,6 +57,33 @@ sap.ui.define([
 				reader.readAsBinaryString(file);
 				
 			}
+			let IDLOCAL = this.getView().getModel("excelModel").getData();
+		},
+		onUploadFiles: function(oEvent){
+			var OData = this.getView().getModel();
+			var that = this;
+			var Exceldata = this.getView().getModel("excelModel").getData();
+			var data = {
+				IDLOCAL : "",
+				NOMBRELOCAL : ""
+			};
+			var sPath = "/LOCALSet";
+			
+			
+			for (var i=0; i<Exceldata.length; i++){
+				data.IDLOCAL = Exceldata[i].IDLOCAL.toString();
+				data.NOMBRELOCAL = Exceldata[i].NOMBRELOCAL.toString();
+				
+				OData.create(sPath,data, {
+                    success: function (response) {
+                        debugger;
+					},
+					error: function(error){
+						debugger;
+					}
+			
+				}
+			)};
 		}
-	});
-});
+	})
+})
