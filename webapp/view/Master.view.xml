@@ -5,6 +5,34 @@
 			<pages>
 				<Page id="page" title="{i18n>hola}">
 					<content>
+						<Table items="{/PRODUCTOSet}">
+							<columns>
+								<Column>
+									<header>
+										<Label text="{i18n>IDPRODUCTO}"/>
+									</header>
+								</Column>
+									<Column>
+										<header>
+											<Label text="{i18n>NOMBREPRODUCTO}"/>
+										</header>
+									</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{Idproducto}" />
+									</cells>
+								</ColumnListItem>
+								<ColumnListItem>
+									<cells>
+										<Text text="{Nombreproducto}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+					<content>
 						<u:FileUploader id="FileUploader" buttonText="{i18n>buttonText}" multiple="true" sameFilenameAllowed="true" fileType="xlsx,xls"
 							buttonOnly="true" change="uploadExcel"/>
 							<Table items="{excelModel>/}">
@@ -19,12 +47,18 @@
 											<Label text="{i18n>NOMBRELOCAL}"/>
 										</header>
 									</Column>
+									<Column>
+										<header>
+											<Label text="{i18n>VALOR}"/>
+										</header>
+									</Column>
 								</columns>
 								<items>
 									<ColumnListItem>
 										<cells>
 											<Text text="{excelModel>IDLOCAL}" />
-											<Text text="{excelModel>NOMBRELOCAL}" />
+											<Text text="{excelModel>NOMBREPRODUCTO}" />
+											<Text text="{excelModel>VALOR}" />
 										</cells>
 									</ColumnListItem>
 								</items>

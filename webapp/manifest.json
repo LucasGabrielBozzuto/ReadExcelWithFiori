@@ -18,7 +18,11 @@
                 "uri": "/sap/opu/odata/sap/ZSM_FERRETERIA_LGB4_SRV/",
                 "type": "OData",
                 "settings": {
-                    "localUri": "localService/metadata.xml"
+                	"annotations":[],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0",
+                    "useBatch": false,
+                    "defaultOpeationMode": "Client"
                 }
             }
         }
